@@ -9,7 +9,7 @@
   </header>
   <div class="container">
     <h1>GitHub - M-Hamza-dost/Python-Bash-Scripts</h1>
-    <p>This repository contains a collection of Python and Bash scripts that I have written for various purposes. Feel free to browse the scripts and use them as needed.</p>
+    <p>This repository contains a collection of Python and Bash scripts that I have written to practice and implement what i've learned so far. Feel free to browse the scripts and use them as needed.</p>
     <h2>Scripts</h2>
     <p>Here are the scripts available in this repository:</p>
     <ul>
