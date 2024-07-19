@@ -3,39 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Python and Bash Scripts Repository</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      margin: 20px;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    p {
-      margin-bottom: 20px;
-    }
-    pre {
-      background-color: #f5f5f5;
-      border: 1px solid #ddd;
-      padding: 10px;
-      overflow-x: auto;
-    }
-  </style>
 </head>
 <body>
   <header>
