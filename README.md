@@ -2,7 +2,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Python and Bash Scripts Repository</title>
 </head>
 <body>
   <header>
