@@ -9,16 +9,100 @@
   </header>
   <div class="container">
     <h1>GitHub - M-Hamza-dost/Python-Bash-Scripts</h1>
-    <p>This repository contains a collection of Python and Bash scripts that I have written to practice and implement what i've learned so far. Feel free to browse the scripts and use them as needed.</p>
+    <p>This repository contains a collection of Python and Bash scripts that I have written to practice and implement what i've learned so far.</p>
     <h2>Scripts</h2>
-    <p>Here are the scripts available in this repository:</p>
     <ul>
-      <li><strong>script.py</strong> - A Python script that performs some task.</li>
-    </ul>
-    <h2>Usage</h2>
-    <p>To use the scripts, simply clone the repository and navigate to the script you want to run. For example, to run the Python script, you can use the following command:</p>
-    <pre>python script.py</pre>
-    <p>Make sure you have the necessary dependencies installed before running the scripts.</p>
+        <li>
+            <h4>Python Script to retrieve creation and modification time of file for Windows and Linux</h4>
+                <pre>
+import os
+import time
+import sys
+import platform
+#Check if the script has the required number of arguments
+if len(sys.argv) != 2: 
+    print(f"Script needs 1 argument\nEx: python {sys.argv[0]} filename")
+    sys.exit()
+else:
+    #Get the filename from the command line argument
+    file_name = sys.argv[1]
+    print(file_name)
+    from datetime import datetime as dt
+    found = False
+    # Set the directory path based on the operating system
+    if platform.system() == 'Windows':
+        dir_path = "C:\\Users\\sc\\Desktop\\python\\day3"
+    else:
+        dir_path = "/home/hamza/bash"
+    # Recursively search for the file in the directory
+    for root, directories, files in os.walk(dir_path):
+        for file in files:
+            if file == file_name:
+                # Get the creation and modification times of the file
+                creation_time = dt.fromtimestamp(os.path.getctime(os.path.join(root, file))).strftime('%I:%M %p  %d/%m/%Y')
+                modified_time = dt.fromtimestamp(os.path.getmtime(os.path.join(root, file))).strftime('%I:%M %p  %d/%m/%Y')
+                # Print the file path and its creation and modification times
+                print(f"Here is your file with complete path: {os.path.join(root, file)}")
+                print(f"{file} was created at {creation_time} and last modified at {modified_time}")   
+                found = True
+                break
+    # If the file is not found, print a message
+    if not found:
+        print('File not found')</pre>
+        </li>
+        <br>
+        <li>
+            <h4>Service Status Checker and Notification Script</h4>
+                <pre>
+#!/bin/bash
+# Prompt the user to enter the service name
+echo "Enter service Name: "
+read service_n
+# Check the status of the service using the 'ps' command
+stat=$(ps -ax | grep $service_n | wc -l)
+# If the service is running (i.e., the 'grep' command returns more than 1 result)
+if [[ $stat > "1" ]]
+then
+    # Print a message indicating that the service is running
+    echo "$service_n is Running"
+else
+    # Print a message indicating that the service is not running, and suggest contacting the admin
+    echo -e "$service_n is not running \nPlease Contact your admin"
+    # Prompt the user to send an email to the admin
+    echo "Send Mail to your admin [y/n]"
+    read input
+    if [[ $input == "y" ]]
+    then
+        # Send email & Print a message indicating that the email has been sent
+        mail -s "Service Down $service_n | ALRET" abc@xyz.com
+        echo "Mail has been sent!"
+    else
+        # Exit the script
+        exit
+    fi
+fi</pre>
+        </li>
+        <br>
+        <li>
+            <h4>Bash Script to Manage System Processes</h4>
+                <pre>
+import sys
+import os
+# Check if the script has the required number of arguments
+if len(sys.argv) != 3:
+    # If not, print a usage message and exit
+    print(f"Script requires two arguments\nFor example {sys.argv[0]} process action\nActions: start/stop/restart/status/enable/disable")
+    sys.exit()
+else:
+    # Get the action and process name from the command-line arguments
+    action = sys.argv[2]
+    processname = sys.argv[1]  
+    # Execute the systemctl command with the provided action and process name
+    os.system(f"systemctl {action} {processname}") 
+    # Exit the script
+    sys.exit()</pre>
+        </li>
+    </ul>               
     <h2>Contributing</h2>
     <p>If you have any suggestions or improvements for the scripts, feel free to fork the repository and submit a pull request. I'm always happy to collaborate and improve the scripts.</p>
   </div>
