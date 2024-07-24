@@ -102,6 +102,35 @@ else:
     # Exit the script
     sys.exit()</pre>
         </li>
+      <li>
+            <h4>Python Script to Send Email with Attachment</h4>
+                <pre>
+import smtplib
+from email.message import EmailMessage
+# Set email details
+my_mail = "abc@gmail.com"
+passwd = "**********"
+# Create SMTP connection and start TLS session
+connection = smtplib.SMTP("smtp.gmail.com")
+connection.starttls()
+# Create email message
+msg = EmailMessage()
+msg['Subject'] = "test mail 2"
+msg['From'] = my_mail
+msg['To'] = "dosth499@gmail.com"
+msg['Cc'] = my_mail
+msg.set_content("This is test mail 2")
+# Attach a file to the email
+with open("simple.csv", "rb") as csvfile:
+    data = csvfile.read()
+    file_name = csvfile.name
+msg.add_attachment(data, maintype='application', subtype='octet-stream', filename=file_name)
+# Log in to email account and send the message
+connection.login(user=my_mail, password=passwd)
+connection.send_message(msg)
+connection.close()</pre>
+        </li>
+        <br>
     </ul>               
     <h2>Contributing</h2>
     <p>If you have any suggestions or improvements for the scripts, feel free to fork the repository and submit a pull request. I'm always happy to collaborate and improve the scripts.</p>
